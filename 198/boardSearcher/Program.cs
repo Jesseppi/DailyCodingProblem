@@ -48,8 +48,8 @@ namespace boardSearcher {
             Console.WriteLine ("row: " + row);
             Console.WriteLine ("column: " + column);
             if (row < 0 || column < 0) return false;
-            if (row > board.Count) return false;
-            if (column > board[row].Count) return false;
+            if (row > board.Count - 1 ) return false;
+            if (column > board[row].Count - 1) return false;
             Console.WriteLine ("im valid");
             Console.WriteLine ("Valid Check ************");
             return true;
@@ -63,7 +63,7 @@ namespace boardSearcher {
                 new List<char> { 'A', 'D', 'E', 'E' }
             };
             var program = new Program ();
-            Console.WriteLine (program.exists (board, "SEE"));
+            Console.WriteLine (program.exists (board, "ABCB"));
         }
     }
 }
