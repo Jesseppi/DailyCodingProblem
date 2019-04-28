@@ -1,9 +1,9 @@
-*/.vscode/*
+**/.vscode/*
 
-*/bin/*
+**/bin/*
 
-*/obj/*
+**/obj/*
 
-*/.Tests/bin/*
+**/.Tests/bin/*
 
-*/.Tests/obj/*
+**/.Tests/obj/*
