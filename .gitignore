@@ -1,0 +1,9 @@
+*/.vscode/*
+
+*/bin/*
+
+*/obj/*
+
+*/.Tests/bin/*
+
+*/.Tests/obj/*
