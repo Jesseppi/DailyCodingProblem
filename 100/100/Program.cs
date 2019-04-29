@@ -4,40 +4,49 @@ using System.Collections.Generic;
 namespace _100 {
     class Program {
 
-        public int MinimumMoves (List<Tuple<int, int>> moves) {
-
+        public static int MinimumMoves (List < (int, int) > moves) {
+            var movesCount = 0;
+            MoveToNext (moves[0], moves[1], moves, ref movesCount, 0);
+            return movesCount;
         }
 
-        private int MovesToNext (Tuple<int, int> position, Tuple<int, int> destination) {
-            // figure out which way im moving
-            positionX = position.Item1;
-            positionY = position.Item2;
+        private static void MoveToNext ((int, int) position, (int, int) interim, List < (int, int) > moves, ref int movesCounter, int indexPosition) {
+            indexPosition++;
 
-            destinationX = destination.Item1;
-            destinationY = destination.Item2;
+            var positionX = position.Item1;
+            var positionY = position.Item2;
 
-            //moving left
-            if (positionX > destinationX) {
+            var interimX = interim.Item1;
+            var interimY = interim.Item2;
 
-            }
-            //moving down
-            if (positionY > destinationY) {
+            var xDelta = positionX - interimX;
+            var yDelta = positionY - interimY;
 
-            }
-            // moving right
-            if (positionX < destinationX) {
-
-            }
-            // Moving up
-            if (positionY > destinationY) {
-
+            if (interim == moves[moves.Count - 1]) {
+                return;
             }
 
-            //
+            if ((uint) xDelta > 0 && (uint) yDelta > 0) {
+                //diagonal move
+                movesCounter++;
+            } else {
+                movesCounter++;
+            }
+
+            if (interim != moves[moves.Count - 1]) {
+                MoveToNext (interim, moves[indexPosition], moves, ref movesCounter, indexPosition);
+            }
+            return;
         }
 
         static void Main (string[] args) {
-            Console.WriteLine ("Hello World!");
+            Console.WriteLine (Program.MinimumMoves (new List < (int, int) > {
+                (0, 0),
+                (1, 1),
+                (1, 2),
+                (1, 1),
+                (0, 0)
+            }));
         }
     }
 }
