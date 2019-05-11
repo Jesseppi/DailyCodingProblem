@@ -24,10 +24,29 @@ namespace _165
 
             tallyDictionary.Values.CopyTo(biggerNumbersArray,0);
             return biggerNumbersArray;
+        } 
+
+        public static int[] GetManyNumbersAreBiggerOnTheRightReversed(int[] numbers){
+            var arrayLength = numbers.Length;
+
+            var biggerNumbersArray = new int[arrayLength];
+
+            var sortedList = new SortedList<int,int>();
+
+            for (var index = arrayLength -1; index >= 0; index--)
+            {
+                sortedList.Add(numbers[index],numbers[index]);
+                var sortedIndex = sortedList.IndexOfKey(numbers[index]);
+                biggerNumbersArray[index] = sortedIndex;
+            }
+
+            return biggerNumbersArray;
+
         }
+
         static void Main(string[] args)
         {
-            var biggerArray = GetManyNumbersAreBiggerOnTheRight(new int[] { 3, 4, 9, 6, 1 });
+            var biggerArray = GetManyNumbersAreBiggerOnTheRightReversed(new int[] { 3, 4, 9, 6, 1 });
             var retrunString = "[";
             for(var item = 0; item < biggerArray.Length; item++)
             {
