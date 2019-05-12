@@ -21,7 +21,8 @@ namespace _143
                     equalValues.Add(item);
                 }
             }
-            
+
+
             var sortedArray = new List<int>(valuesLessThan.Count + equalValues.Count + valuesGreaterThan.Count);
             sortedArray.AddRange(valuesLessThan);
             sortedArray.AddRange(equalValues);
