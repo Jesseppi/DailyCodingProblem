@@ -1,0 +1,55 @@
+/*
+Write a solution that would dispense change for a vending machine from a given set of denominations.
+Given an amount and a list of denominations, can you code a solution that returns the amount 
+in the minimum number of coins.
+
+For example, given the denominations:
+
+ 5c 
+ 10c 
+ 20c 
+ 50c
+
+ for input 50 cents => the result is one 50c coin
+ for input 40 cents => the result is two 20c coins 
+
+*/
+
+denominations [{50,0},{20,100},{10, 100},{5,10}] 
+$1.45 {{50,2},{20,2},{5,1}}
+
+[5][10][15][10][25]
+[1][1][]
+
+ = 0 != 145
+ 2 x 50 = 100 ! = 145  (45)
+ 
+ 
+
+returMyChange(145,denominations)
+
+public Dictionary<int,int> returnMyChange(int changeAmount, list<int> denominations)
+    var changeBreakdown = new Dictionary<int,int>
+    
+    var remainingToOutput = changeAmount;
+    
+    foreach(var denomination in denominations){
+        var numberOfCoinAndChange = calculateCoinNumbers(denomination.Key,denomination.Value,remainingToOutput);
+        if(changeBreakdown.item1 > 0){
+            changeBreakdown.Add(denomination,numberOfCoinAndChange.item1)    
+        }        
+        remainingToOutput = numberOfCoinAndChange.item2;
+        if(remainingToOutput == 0) break;
+    }   
+    
+    return changeBreakdown;
+    
+public (int,int) calculateCoinNumbers(int denomination, int numberofCoinsToDispense, int amount)
+        if (denomination > amount) return new (int,int){0,amount};
+        var numberOfDenomination = amount/denomination  // 2
+        if(numberOfDenomination > numberofCoinsToDispense){
+            
+        }
+        var remainder = amount % denomination // 45
+        return new (int,int){numberOfDenomination,remainder}
+        

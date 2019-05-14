@@ -37,24 +37,28 @@ namespace _138 {
         // }
 
         static int minCoins (int[] coins, int value) {
-            int[] table = new int[V + 1];
+            int[] calculationTable = new int[value + 1];
             // Base case (If given// value V is 0)
-            table[0] = 0;
+            calculationTable[0] = 0;
 
             foreach (var denomination in coins)
             {
-                if(denomination < table.Length) table[denomination] = 1;
+                if(denomination < calculationTable.Length) calculationTable[denomination] = 1;
             }
 
-            for (int i = 1; i <= V; i++) {
-                for (int j = 0; j < coins.Length; j++)
-                    if (coins[j] <= i) {
-                        int smallerValueCount = table[i - coins[j]];
-                        if (i - d > 0)
-                            table[i] = sub_res + 1;
+
+            for (int i = 1; i <= value; i++) {
+                for (int j = 0; j < coins.Length; j++){
+                    if(calculationTable[i] == 1 ) break;
+                    if ( i - coins[j] >= 0 )
+                    {
+                        int smallerValueCount = calculationTable[i - coins[j]];
+                        calculationTable[i] = smallerValueCount + 1;
+                        break;
                     }
+                }
             }
-            return table[V];
+            return calculationTable[value];
 
         }
 
